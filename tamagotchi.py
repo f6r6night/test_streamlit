@@ -1,9 +1,5 @@
 from random import randint
 
-
-"""Ceci est une app de gestion d'un animal virtuel"""
-
-
 class Tamagotchi:
     def __init__(self, name):
         self.name = name
@@ -13,29 +9,23 @@ class Tamagotchi:
         self.life = True
         
     def describe(self):
-        description = (f"Nom = {self.name} - "
-                       f"Energie = {self.energy} "
-                       f"Bonheur = {self.joy}")
-        return description
-        
+        return f"Nom : {self.name} | Énergie : {self.energy} | Joie : {self.joy} | Faim : {self.eat}"
         
     def to_feed(self):
         self.eat = max(0, self.eat - 30)
-        self.energy = max (0, self.energy - 5)
-        print(f"n\{self.name} mange une friandise")
-        
+        self.energy = max(0, self.energy - 5)
+        return f"{self.name} mange une friandise !"
         
     def play(self):
-        if self.energie < 20:
-            print(f"\n{self.nom} est trop fatigué pour jouer...")
-        return
+        if self.energy < 20:
+            return f"{self.name} est trop fatigué pour jouer..."
+        
         self.joy = min(100, self.joy + 20)
-        print(f"n\{self.name} est heureux(se) d'être à tes côtés")
-        self.energy = max(0, self.energy -20)
-        self.eat = min(100, self.eat +15)
+        self.energy = max(0, self.energy - 20)
+        self.eat = min(100, self.eat + 15)
+        return f"{self.name} s'est bien amusé avec toi !"
         
     def sleep(self):
-        self.energy = min(100, self.energy +40)
-        self.eat = min(100, self.eat +15)
-        print(f"{self.name} fait une grosse sieste ! ")
-        
+        self.energy = min(100, self.energy + 40)
+        self.eat = min(100, self.eat + 15)
+        return f"{self.name} fait une grosse sieste !"
